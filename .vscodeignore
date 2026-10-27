@@ -1,0 +1,5 @@
+.backups/**
+.screenshots/**
+.git/**
+.gitignore
+*.vsix

@@ -1,0 +1,8 @@
+.backups/
+**/.backups/
+.screenshots/
+**/.screenshots/
+node_modules/
+*.vsix
+*.log
+.DS_Store

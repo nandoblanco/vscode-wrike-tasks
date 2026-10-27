@@ -1,0 +1,288 @@
+{
+  "name": "wrike-tasks",
+  "displayName": "Wrike Tasks",
+  "description": "View, star, search, sort, change status, post comments with @mentions, and copy Wrike tasks as Markdown.",
+  "version": "1.7.0",
+  "publisher": "nandoBlanco",
+  "author": "nandoblanco",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nandoblanco/wrike-tasks.git"
+  },
+  "keywords": [
+    "wrike",
+    "pmo",
+    "tasks",
+    "project-management",
+    "markdown"
+  ],
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "wrike-tasks",
+          "title": "Wrike Tasks",
+          "icon": "media/wrike.svg"
+        }
+      ]
+    },
+    "views": {
+      "wrike-tasks": [
+        {
+          "id": "wrikeTasks.recentView",
+          "name": "Recent & Starred (20)"
+        },
+        {
+          "id": "wrikeTasks.view",
+          "name": "Clients"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "wrikeTasks.refresh",
+        "title": "Wrike: Refresh My Tasks",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "wrikeTasks.search",
+        "title": "Wrike: Search My Tasks",
+        "icon": "$(search)"
+      },
+      {
+        "command": "wrikeTasks.filterTree",
+        "title": "Wrike: Filter Sidebar Tasks",
+        "icon": "$(filter)"
+      },
+      {
+        "command": "wrikeTasks.clearFilter",
+        "title": "Wrike: Clear Sidebar Filter",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "wrikeTasks.sortTasks",
+        "title": "Wrike: Sort Tasks & Clients",
+        "icon": "$(list-ordered)"
+      },
+      {
+        "command": "wrikeTasks.starTask",
+        "title": "Wrike: Star Task",
+        "icon": "$(star-empty)"
+      },
+      {
+        "command": "wrikeTasks.unstarTask",
+        "title": "Wrike: Unstar Task",
+        "icon": "$(star-full)"
+      },
+      {
+        "command": "wrikeTasks.starClient",
+        "title": "Wrike: Star Client",
+        "icon": "$(star-empty)"
+      },
+      {
+        "command": "wrikeTasks.unstarClient",
+        "title": "Wrike: Unstar Client",
+        "icon": "$(star-full)"
+      },
+      {
+        "command": "wrikeTasks.signInOAuth",
+        "title": "Wrike: Sign In with OAuth (Google / SSO)",
+        "icon": "$(sign-in)"
+      },
+      {
+        "command": "wrikeTasks.setToken",
+        "title": "Wrike: Set Permanent Access Token",
+        "icon": "$(key)"
+      },
+      {
+        "command": "wrikeTasks.clearToken",
+        "title": "Wrike: Clear API Token"
+      },
+      {
+        "command": "wrikeTasks.openTaskDetail",
+        "title": "Wrike: View Task Details"
+      },
+      {
+        "command": "wrikeTasks.changeStatus",
+        "title": "Wrike: Change Task Status",
+        "icon": "$(tag)"
+      },
+      {
+        "command": "wrikeTasks.addComment",
+        "title": "Wrike: Add Comment to Task",
+        "icon": "$(comment)"
+      },
+      {
+        "command": "wrikeTasks.copyMarkdown",
+        "title": "Wrike: Copy in Markdown",
+        "icon": "$(markdown)"
+      },
+      {
+        "command": "wrikeTasks.openInBrowser",
+        "title": "Wrike: Open Task in Browser",
+        "icon": "$(link-external)"
+      },
+      {
+        "command": "wrikeTasks.copyLink",
+        "title": "Wrike: Copy Task Permalink",
+        "icon": "$(copy)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "wrikeTasks.search",
+          "group": "navigation@1",
+          "when": "view == wrikeTasks.view || view == wrikeTasks.recentView"
+        },
+        {
+          "command": "wrikeTasks.filterTree",
+          "group": "navigation@2",
+          "when": "view == wrikeTasks.view || view == wrikeTasks.recentView"
+        },
+        {
+          "command": "wrikeTasks.sortTasks",
+          "group": "navigation@3",
+          "when": "view == wrikeTasks.view"
+        },
+        {
+          "command": "wrikeTasks.refresh",
+          "group": "navigation@4",
+          "when": "view == wrikeTasks.view || view == wrikeTasks.recentView"
+        },
+        {
+          "command": "wrikeTasks.signInOAuth",
+          "group": "navigation@5",
+          "when": "view == wrikeTasks.view || view == wrikeTasks.recentView"
+        },
+        {
+          "command": "wrikeTasks.setToken",
+          "group": "1_token@1",
+          "when": "view == wrikeTasks.view || view == wrikeTasks.recentView"
+        },
+        {
+          "command": "wrikeTasks.clearToken",
+          "group": "1_token@2",
+          "when": "view == wrikeTasks.view || view == wrikeTasks.recentView"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "wrikeTasks.starTask",
+          "group": "inline@0",
+          "when": "(view == wrikeTasks.view || view == wrikeTasks.recentView) && viewItem == wrikeTask"
+        },
+        {
+          "command": "wrikeTasks.unstarTask",
+          "group": "inline@0",
+          "when": "(view == wrikeTasks.view || view == wrikeTasks.recentView) && viewItem == wrikeTaskStarred"
+        },
+        {
+          "command": "wrikeTasks.starClient",
+          "group": "inline@0",
+          "when": "view == wrikeTasks.view && viewItem == wrikeClientGroup"
+        },
+        {
+          "command": "wrikeTasks.unstarClient",
+          "group": "inline@0",
+          "when": "view == wrikeTasks.view && viewItem == wrikeClientGroupStarred"
+        },
+        {
+          "command": "wrikeTasks.copyMarkdown",
+          "group": "inline@1",
+          "when": "(view == wrikeTasks.view || view == wrikeTasks.recentView) && (viewItem == wrikeTask || viewItem == wrikeTaskStarred)"
+        },
+        {
+          "command": "wrikeTasks.changeStatus",
+          "group": "inline@2",
+          "when": "(view == wrikeTasks.view || view == wrikeTasks.recentView) && (viewItem == wrikeTask || viewItem == wrikeTaskStarred)"
+        },
+        {
+          "command": "wrikeTasks.openInBrowser",
+          "group": "inline@3",
+          "when": "(view == wrikeTasks.view || view == wrikeTasks.recentView) && (viewItem == wrikeTask || viewItem == wrikeTaskStarred)"
+        },
+        {
+          "command": "wrikeTasks.copyLink",
+          "group": "inline@4",
+          "when": "(view == wrikeTasks.view || view == wrikeTasks.recentView) && (viewItem == wrikeTask || viewItem == wrikeTaskStarred)"
+        },
+        {
+          "command": "wrikeTasks.starTask",
+          "group": "0_star@1",
+          "when": "(view == wrikeTasks.view || view == wrikeTasks.recentView) && viewItem == wrikeTask"
+        },
+        {
+          "command": "wrikeTasks.unstarTask",
+          "group": "0_star@1",
+          "when": "(view == wrikeTasks.view || view == wrikeTasks.recentView) && viewItem == wrikeTaskStarred"
+        },
+        {
+          "command": "wrikeTasks.starClient",
+          "group": "0_star@1",
+          "when": "view == wrikeTasks.view && viewItem == wrikeClientGroup"
+        },
+        {
+          "command": "wrikeTasks.unstarClient",
+          "group": "0_star@1",
+          "when": "view == wrikeTasks.view && viewItem == wrikeClientGroupStarred"
+        },
+        {
+          "command": "wrikeTasks.copyMarkdown",
+          "group": "1_actions@1",
+          "when": "(view == wrikeTasks.view || view == wrikeTasks.recentView) && (viewItem == wrikeTask || viewItem == wrikeTaskStarred)"
+        },
+        {
+          "command": "wrikeTasks.changeStatus",
+          "group": "1_actions@2",
+          "when": "(view == wrikeTasks.view || view == wrikeTasks.recentView) && (viewItem == wrikeTask || viewItem == wrikeTaskStarred)"
+        },
+        {
+          "command": "wrikeTasks.addComment",
+          "group": "1_actions@3",
+          "when": "(view == wrikeTasks.view || view == wrikeTasks.recentView) && (viewItem == wrikeTask || viewItem == wrikeTaskStarred)"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Wrike Tasks",
+      "properties": {
+        "wrikeTasks.apiBaseUrl": {
+          "type": "string",
+          "scope": "application",
+          "default": "https://www.wrike.com/api/v4",
+          "enum": [
+            "https://www.wrike.com/api/v4",
+            "https://app-eu.wrike.com/api/v4",
+            "https://app-us2.wrike.com/api/v4"
+          ],
+          "description": "Wrike API v4 base URL for your account data center."
+        },
+        "wrikeTasks.includeDeferred": {
+          "type": "boolean",
+          "default": false,
+          "description": "Also include Deferred (on-hold) tasks assigned to you in addition to Active tasks."
+        },
+        "wrikeTasks.oauthClientId": {
+          "type": "string",
+          "scope": "application",
+          "default": "",
+          "description": "Optional default Wrike OAuth 2.0 Client ID pre-filled when signing in with OAuth."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "vsce package"
+  }
+}
