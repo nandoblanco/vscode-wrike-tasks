@@ -35,13 +35,13 @@ When your tasks live in Wrike and your code lives in VS Code, managing daily pro
 ### Option 1: Install from VSIX (Recommended)
 
 ```bash
-code --install-extension wrike-tasks-1.7.0.vsix
+code --install-extension wrike-tasks-1.7.1.vsix
 ```
 
 For VS Code Insiders:
 
 ```bash
-code-insiders --install-extension wrike-tasks-1.7.0.vsix
+code-insiders --install-extension wrike-tasks-1.7.1.vsix
 ```
 
 ### Option 2: Package from Source
@@ -49,7 +49,7 @@ code-insiders --install-extension wrike-tasks-1.7.0.vsix
 ```bash
 cd wrike-tasks
 npx @vscode/vsce package
-code --install-extension wrike-tasks-1.7.0.vsix
+code --install-extension wrike-tasks-1.7.1.vsix
 ```
 
 ## Step-by-Step Setup

@@ -2,14 +2,18 @@
   "name": "wrike-tasks",
   "displayName": "Wrike Tasks",
   "description": "View, star, search, sort, change status, post comments with @mentions, and copy Wrike tasks as Markdown.",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "publisher": "nandoBlanco",
   "author": "nandoblanco",
   "license": "MIT",
   "icon": "media/icon.png",
+  "homepage": "https://github.com/nandoblanco/vscode-wrike-tasks#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nandoblanco/wrike-tasks.git"
+    "url": "https://github.com/nandoblanco/vscode-wrike-tasks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nandoblanco/vscode-wrike-tasks/issues"
   },
   "keywords": [
     "wrike",

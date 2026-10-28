@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.1 (2026-10-27)
+
+- Updated `repository`, `homepage`, and `bugs` URLs to `https://github.com/nandoblanco/vscode-wrike-tasks` and standardized `README.md`.
+
 ## 1.7.0 (2026-10-26)
 
 - Split the Wrike sidebar into two views: `Recent & Starred (20)` (`wrikeTasks.recentView`, flat list of up to 20 recently modified active tasks with starred tasks pinned first) and `Clients` (`wrikeTasks.view`, `Client -> Workflow Status -> Task` tree with starred clients at the top).
